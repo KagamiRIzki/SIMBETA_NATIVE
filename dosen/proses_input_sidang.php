@@ -8,11 +8,7 @@ include "../koneksi.php";
 
 //MENERIMA DATA DG METODE POST
 $id_sidang=$_POST['id_sidang'];
-echo "id sidang ";
-echo $id_sidang;
 $id_bimbingan=$_POST['id_bimbingan'];
-echo "id bimbingan ";
-echo $id_bimbingan;
 $nim=$_POST['nim'];
 $nama_mhs=$_POST['nama_mhs'];
 $nidn=$_POST['nidn'];
@@ -23,8 +19,10 @@ $bab=$_POST['bab'];
 $status=$_POST['status'];
 $pertemuan=$_POST['jumlah'];
 $cek_p=$_POST['cek_p'];
-
 $panggil="SELECT * FROM bimbingan WHERE nim='$nim'";
+echo "panggil = ";
+echo $panggil;
+echo "<br>";
 $hasil=mysql_query($panggil);
 while ($tampil=mysql_fetch_array($hasil)){
 $id_bimbingan=$tampil['id_bimbingan'];
@@ -38,126 +36,76 @@ if ($cek_p==1) {
 	# code...
 	if ($username==$nidn_p1) {
 		# code...
-		$cek_nidn1=1;
-		$cek_nidn2=0;
-
-		$panggil_sdg="SELECT * FROM sidang WHERE nim =$nim";
+		$cek_p1=1;
+		$cek_p2=0;
+		$jumlah="SELECT COUNT(*) FROM sidang WHERE nim ='$nim'";
+		echo "<br>";
+		echo $username;
+		echo "insert data p1";
+		$panggil_sdg="SELECT * FROM sidang WHERE nim ='$nim'";
 		$hasil_sdg=mysql_query($panggil_sdg);
 		$cek_sdg=mysql_num_rows($hasil_sdg);
+		echo $panggil_sdg;
+		echo "hasil";
+		echo $hasil_sdg;
+		var_dump($hasil_sdg);
 		echo "cek ";
 		echo $cek_sdg;
-		if ($cek_sdg=0) {
+		if ($jumlah==1) {
 			# code...
-			$query = "INSERT INTO sidang 
-			(id_sidang, id_bimbingan, nim, nama_mhs, nidn_p1, nama_pem1, nidn_p2, nama_pem2, judul_ta, bab, pertemuan, cek_p1, cek_p2)
-			VALUES 
-			('$id_sidang', '$id_bimbingan', '$nim', '$nama_mhs', '$nidn_p1', '$nama_pem1', '$nidn_p2', '$nama_pem2', '$judul_ta', '$bab', '$pertemuan', '$cek_p1', '$cek_p2')";
-			
-			$simpan=mysql_query($query);
-
-			if($simpan) 
-			{
-				// echo"<script>alert('Data berhasil diinputkan'); location='lihat_tabel_sidang.php';</script>";
-				echo"<script>alert('Data berhasil diinputkan');</script>";
-			}
-			else
-			{
-				// echo"<script>alert('Data gagal diinputkan'); location='pilih_mahasiswa.php';</script>";
-				echo"<script>alert('Data gagal diinputkan');</script>";
-			}
+			echo "data ada lakukan update";
 		}else {
 			# code...
-			$query = "UPDATE sidang SET 
-			id_sidang='$id_sidang', 
-			id_bimbingan='$id_bimbingan', 
-			nim='$nim', 
-			nama_mhs='$nama_mhs', 
-			nidn_p1='$nidn_p1', 
-			nama_pem1='$nama_pem1',
-			nidn_p2='$nidn_p2', 
-			nama_pem2='$nama_pem2', 
-			judul_ta='$judul_ta', 
-			bab='$bab', 
-			pertemuan='$pertemuan', 
-			cek_p1='$cek_p1'";
-			$simpan=mysql_query($query);
-
-			if($simpan) 
-			{
-				// echo"<script>alert('Data berhasil diinputkan'); location='lihat_tabel_sidang.php';</script>";
-				echo"<script>alert('Data berhasil ditambahkan');</script>";
-			}
-			else
-			{
-				// echo"<script>alert('Data gagal diinputkan'); location='pilih_mahasiswa.php';</script>";
-				echo"<script>alert('Data gagal ditambahkan');</script>";
+			echo "data tidak ada lakukan insert";
+			$input_sdg="INSERT INTO sidang 
+			(id_sidang, id_bimbingan, nim, nama_mhs, nidn_p1, nama_pem1, nidn_p2, nama_pem2, bab, pertemuan, cek_p1, cek_p2)
+			VALUE
+			('$id_sidang', '$id_bimbingan', '$nim', '$nama_mhs', '$nidn_p1', '$nama_pem1',  '$nidn_p2', '$nama_pem2', '$bab', '$pertemuan', '$cek_p1', '$cek_p2')";
+			$simpan_sdg=mysql_query($input_sdg);
+			if ($simpan_sdg) {
+				# code...
+				echo"<script>alert('Data berhasil di inputkan');</script>";
+			}else {
+				# code...
+				echo"<script>alert('Data gagal di inputkan');</script>";
 			}
 		}
 	}else {
 		# code...
 		$cek_p1=0;
 		$cek_p2=1;
-		
-		$panggil_sdg="SELECT * FROM sidang WHERE nim=$nim";
-		$hasil_sdg=mysql_query($panggil_sdg);
-		echo "hasil";
-		echo $hasil_sdg;
-		$cek_sdg=mysql_num_rows($hasil_sdg);
-		echo "cek ";
-		echo $cek_sdg;
-		var_dump($cek_sdg);
-		if ($cek_sdg==0) {
+
+		$hitung_sidang=mysql_query("SELECT * FROM sidang WHERE nim ='$nim'");
+		$jumlah=mysql_num_rows($hitung_sidang);
+		echo "jumlah data = ";
+		echo $jumlah;
+		if ($jumlah>0) {
 			# code...
-			$query = "INSERT INTO sidang 
-			(id_sidang, id_bimbingan, nim, nama_mhs, nidn_p1, nama_pem1, nidn_p2, nama_pem2, judul_ta, bab, pertemuan, cek_p1, cek_p2)
-			VALUES 
-			('$id_sidang', '$id_bimbingan', '$nim', '$nama_mhs', '$nidn_p1', '$nama_pem1', '$nidn_p2', '$nama_pem2', '$judul_ta', '$bab', '$pertemuan', '$cek_p1', '$cek_p2')";			
-			$simpan=mysql_query($query);
-			if($simpan) 
-			{
-				// echo"<script>alert('Data berhasil diinputkan'); location='lihat_tabel_sidang.php';</script>";
-				echo"<script>alert('Data berhasil diinputkan');</script>";
-			}
-			else
-			{
-				// echo"<script>alert('Data gagal diinputkan'); location='pilih_mahasiswa.php';</script>";
-				echo"<script>alert('Data gagal diinputkan');</script>";
-			}
+			echo "data ada lakukan update";
+			$update_sdg="UPDATE sidang SET
+			cek_p2='$cek_p2'
+			WHERE nim='$nim'";
 		}else {
 			# code...
-			$query = "UPDATE sidang SET 
-			id_sidang='$id_sidang', 
-			id_bimbingan='$id_bimbingan', 
-			nim='$nim', 
-			nama_mhs='$nama_mhs', 
-			nidn_p1='$nidn_p1', 
-			nama_pem1='$nama_pem1',
-			nidn_p2='$nidn_p2', 
-			nama_pem2='$nama_pem2', 
-			judul_ta='$judul_ta', 
-			bab='$bab', 
-			pertemuan='$pertemuan', 
-			cek_p1='$cek_p1',
-			cek_p2='$cek_p2'";
-			$simpan=mysql_query($query);
-
-			if($simpan) 
-			{
-				// echo"<script>alert('Data berhasil diinputkan'); location='lihat_tabel_sidang.php';</script>";
-				echo"<script>alert('Data berhasil ditambahkan');</script>";
-			}
-			else
-			{
-				// echo"<script>alert('Data gagal diinputkan'); location='pilih_mahasiswa.php';</script>";
-				echo"<script>alert('Data gagal ditambahkan');</script>";
+			echo "data tidak ada lakukan insert";
+			$input_sdg="INSERT INTO sidang 
+			(id_sidang, id_bimbingan, nim, nama_mhs, nidn_p1, nama_pem1, nidn_p2, nama_pem2, bab, pertemuan, cek_p1, cek_p2)
+			VALUE
+			('$id_sidang', '$id_bimbingan', '$nim', '$nama_mhs', '$nidn_p1', '$nama_pem1', '$nidn_p2', '$nama_pem2',  '$bab', '$pertemuan', '$cek_p1', '$cek_p2')";
+			$simpan_sdg=mysql_query($input_sdg);
+			if ($simpan_sdg) {
+				# code...
+				echo"<script>alert('Data berhasil di inputkan');</script>";
+			}else {
+				# code...
+				echo"<script>alert('Data gagal di inputkan');</script>";
 			}
 		}
 	}
 }else {
 	# code...
-	echo"<script>alert('Data izin belum di cek !!!');</script>";
+	echo"<script>alert('Data cek gk di cek');</script>";
 }
 
 echo mysql_error();
-
 ?>

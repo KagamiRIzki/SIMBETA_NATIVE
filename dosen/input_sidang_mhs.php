@@ -47,8 +47,8 @@
               $judul_ta=$tampil['judul_ta'];
                 // $nim=$tampil['nim'];
               $nama_mhs=$tampil['nama_mhs'];
-
-              $panggil_pertemuan="SELECT * FROM pertemuan WHERE nim='$nim' GROUP BY tgl_bimbingan DESC";
+              $panggil_pertemuan="SELECT * FROM pertemuan WHERE nim='$nim' ORDER BY bab DESC";
+              
               $hasil_pertemuan=mysql_query($panggil_pertemuan);
               $tampil_pertemuan=mysql_fetch_array($hasil_pertemuan);
 
@@ -134,7 +134,6 @@
                               <?php 
                               if ($jumlah==8) {
                                 # code...
-                                echo "<input type='checkbox' name='cek_p' value='1'>";
                                 if ($bab==5) {
                                   # code...
                                   echo "<input type='checkbox' name='cek_p' value='1'>";
