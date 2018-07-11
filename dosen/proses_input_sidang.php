@@ -20,9 +20,6 @@ $status=$_POST['status'];
 $pertemuan=$_POST['jumlah'];
 $cek_p=$_POST['cek_p'];
 $panggil="SELECT * FROM bimbingan WHERE nim='$nim'";
-echo "panggil = ";
-echo $panggil;
-echo "<br>";
 $hasil=mysql_query($panggil);
 while ($tampil=mysql_fetch_array($hasil)){
 $id_bimbingan=$tampil['id_bimbingan'];
@@ -38,29 +35,21 @@ if ($cek_p==1) {
 		# code...
 		$cek_p1=1;
 		$cek_p2=0;
-		$jumlah="SELECT COUNT(*) FROM sidang WHERE nim ='$nim'";
-		echo "<br>";
-		echo $username;
-		echo "insert data p1";
-		$panggil_sdg="SELECT * FROM sidang WHERE nim ='$nim'";
-		$hasil_sdg=mysql_query($panggil_sdg);
-		$cek_sdg=mysql_num_rows($hasil_sdg);
-		echo $panggil_sdg;
-		echo "hasil";
-		echo $hasil_sdg;
-		var_dump($hasil_sdg);
-		echo "cek ";
-		echo $cek_sdg;
-		if ($jumlah==1) {
+		$hitung_sidang=mysql_query("SELECT * FROM sidang WHERE nim ='$nim'");
+		$jumlah=mysql_num_rows($hitung_sidang);
+		if ($jumlah>0) {
 			# code...
 			echo "data ada lakukan update";
+			$update_sdg="UPDATE sidang SET
+			cek_p1='$cek_p1'
+			WHERE nim='$nim'";
 		}else {
 			# code...
 			echo "data tidak ada lakukan insert";
 			$input_sdg="INSERT INTO sidang 
 			(id_sidang, id_bimbingan, nim, nama_mhs, nidn_p1, nama_pem1, nidn_p2, nama_pem2, bab, pertemuan, cek_p1, cek_p2)
 			VALUE
-			('$id_sidang', '$id_bimbingan', '$nim', '$nama_mhs', '$nidn_p1', '$nama_pem1',  '$nidn_p2', '$nama_pem2', '$bab', '$pertemuan', '$cek_p1', '$cek_p2')";
+			('$id_sidang', '$id_bimbingan', '$nim', '$nama_mhs', '$nidn_p1', '$nama_pem1', '$nidn_p2', '$nama_pem2',  '$bab', '$pertemuan', '$cek_p1', '$cek_p2')";
 			$simpan_sdg=mysql_query($input_sdg);
 			if ($simpan_sdg) {
 				# code...
@@ -77,8 +66,6 @@ if ($cek_p==1) {
 
 		$hitung_sidang=mysql_query("SELECT * FROM sidang WHERE nim ='$nim'");
 		$jumlah=mysql_num_rows($hitung_sidang);
-		echo "jumlah data = ";
-		echo $jumlah;
 		if ($jumlah>0) {
 			# code...
 			echo "data ada lakukan update";
