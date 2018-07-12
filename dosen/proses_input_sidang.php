@@ -27,6 +27,7 @@ $nidn_p1=$tampil['nidn_p1'];
 $nama_pem1=$tampil['nama_pem1'];
 $nidn_p2=$tampil['nidn_p2'];
 $nama_pem2=$tampil['nama_pem2'];
+$judul_ta=$tampil['judul_ta'];
 };
 
 if ($cek_p==1) {
@@ -37,26 +38,36 @@ if ($cek_p==1) {
 		$cek_p2=0;
 		$hitung_sidang=mysql_query("SELECT * FROM sidang WHERE nim ='$nim'");
 		$jumlah=mysql_num_rows($hitung_sidang);
+		
 		if ($jumlah>0) {
 			# code...
+
 			echo "data ada lakukan update";
 			$update_sdg="UPDATE sidang SET
 			cek_p1='$cek_p1'
 			WHERE nim='$nim'";
+			$update_sdg=mysql_query($update_sdg);
+			if ($update_sdg) {
+				# code...
+				echo"<script>alert('Data berhasil ditambahkan'); location='pilih_mahasiswa.php';</script>";
+			}else {
+				# code...
+				echo"<script>alert('Data gagal ditambahkan'); location='pilih_mahasiswa.php';</script>";
+			}
 		}else {
 			# code...
 			echo "data tidak ada lakukan insert";
 			$input_sdg="INSERT INTO sidang 
-			(id_sidang, id_bimbingan, nim, nama_mhs, nidn_p1, nama_pem1, nidn_p2, nama_pem2, bab, pertemuan, cek_p1, cek_p2)
+			(id_sidang, id_bimbingan, nim, nama_mhs, nidn_p1, nama_pem1, nidn_p2, nama_pem2, judul_ta, bab, pertemuan, cek_p1, cek_p2)
 			VALUE
-			('$id_sidang', '$id_bimbingan', '$nim', '$nama_mhs', '$nidn_p1', '$nama_pem1', '$nidn_p2', '$nama_pem2',  '$bab', '$pertemuan', '$cek_p1', '$cek_p2')";
+			('$id_sidang', '$id_bimbingan', '$nim', '$nama_mhs', '$nidn_p1', '$nama_pem1', '$nidn_p2', '$nama_pem2', '$judul_ta', '$bab', '$pertemuan',  '$cek_p1', '$cek_p2')";
 			$simpan_sdg=mysql_query($input_sdg);
 			if ($simpan_sdg) {
 				# code...
-				echo"<script>alert('Data berhasil di inputkan');</script>";
+				echo"<script>alert('Data berhasil di inputkan'); location='pilih_mahasiswa.php';</script>";
 			}else {
 				# code...
-				echo"<script>alert('Data gagal di inputkan');</script>";
+				echo"<script>alert('Data gagal di inputkan'); location='pilih_mahasiswa.php';</script>";
 			}
 		}
 	}else {
@@ -69,23 +80,31 @@ if ($cek_p==1) {
 		if ($jumlah>0) {
 			# code...
 			echo "data ada lakukan update";
-			$update_sdg="UPDATE sidang SET
+			$update_sidang="UPDATE sidang SET
 			cek_p2='$cek_p2'
 			WHERE nim='$nim'";
+			$update_sdg=mysql_query($input_sidang);
+			if ($update_sdg) {
+				# code...
+				echo"<script>alert('Data berhasil ditambahkan'); location='pilih_mahasiswa.php';</script>";
+			}else {
+				# code...
+				echo"<script>alert('Data gagal ditambahkan'); location='pilih_mahasiswa.php';</script>";
+			}
 		}else {
 			# code...
 			echo "data tidak ada lakukan insert";
 			$input_sdg="INSERT INTO sidang 
-			(id_sidang, id_bimbingan, nim, nama_mhs, nidn_p1, nama_pem1, nidn_p2, nama_pem2, bab, pertemuan, cek_p1, cek_p2)
+			(id_sidang, id_bimbingan, nim, nama_mhs, nidn_p1, nama_pem1, nidn_p2, nama_pem2, judul_ta, bab, pertemuan, cek_p1, cek_p2)
 			VALUE
-			('$id_sidang', '$id_bimbingan', '$nim', '$nama_mhs', '$nidn_p1', '$nama_pem1', '$nidn_p2', '$nama_pem2',  '$bab', '$pertemuan', '$cek_p1', '$cek_p2')";
+			('$id_sidang', '$id_bimbingan', '$nim', '$nama_mhs', '$nidn_p1', '$nama_pem1', '$nidn_p2', '$nama_pem2', '$judul_ta',  '$bab', '$pertemuan', '$cek_p1', '$cek_p2')";
 			$simpan_sdg=mysql_query($input_sdg);
 			if ($simpan_sdg) {
 				# code...
-				echo"<script>alert('Data berhasil di inputkan');</script>";
+				echo"<script>alert('Data berhasil di inputkan'); location='pilih_mahasiswa.php';</script>";
 			}else {
 				# code...
-				echo"<script>alert('Data gagal di inputkan');</script>";
+				echo"<script>alert('Data gagal di inputkan'); location='pilih_mahasiswa.php';</script>";
 			}
 		}
 	}
