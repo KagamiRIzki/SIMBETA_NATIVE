@@ -91,23 +91,180 @@
                 <input type="form-control" class="form-control" placeholder="Tanggal Bimbingan" name="tgl_bimbingan" value="<?php echo date("Y/m/d"); ?>" readonly>
               </div>
 
+              
               <div class="form-group">
                 <label>Bab Bimbingan</label>
-                <label class="radio-inline">
-                  <input type="radio" name="bab" id="optionsRadiosInline1" value="1" checked> 1
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" name="bab" id="optionsRadiosInline2" value="2"> 2
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" name="bab" id="optionsRadiosInline3" value="3"> 3
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" name="bab" id="optionsRadiosInline2" value="4"> 4
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" name="bab" id="optionsRadiosInline3" value="5"> 5
-                </label>
+              <?php 
+                $pertemuan="SELECT * FROM pertemuan WHERE nim='$nim'";
+                $hasil_prt=mysql_query($pertemuan);
+                $tampil_prt=mysql_fetch_array($hasil_prt);
+                $nim=$tampil_prt['nim'];
+                $nama_mhs=$tampil_prt['nama_mhs'];
+                $nidn=$tampil_prt['nidn'];
+                $nama_dsn=$tampil_prt['nama_dsn'];
+                $bab=$tampil_prt['bab'];
+                if ($username==$nidn_p1) {
+                  # code...
+                  $panggil_bab="SELECT * FROM pertemuan WHERE nidn='$nidn_p2'";
+                  $hasil_bab=mysql_query($panggil_bab);
+                  $tampil_bab=mysql_fetch_array($hasil_bab);
+                  $nim=$tampil_prt['nim'];
+                  $nama_mhs=$tampil_prt['nama_mhs'];
+                  $bab=$tampil_prt['bab'];
+                  if($bab==1){
+                    echo "
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='1' checked> 1
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline2' value='2'> 2
+                    </label>";
+                  }elseif ($bab==2) {
+                    # code...
+                    echo "
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='1' checked> 1
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='2' > 2
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline2' value='3'> 3
+                    </label>";
+                  }elseif ($bab==3) {
+                    # code...
+                    echo "
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='1' checked> 1
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='2' > 2
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='3' > 3
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline2' value='4'> 4
+                    </label>";
+                  }elseif ($bab==4) {
+                    # code...
+                    echo "
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='1' checked> 1
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='2' > 2
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='3' > 3
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline2' value='4'> 4
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline2' value='5'> 5
+                    </label>";
+                  }else{
+                    echo "
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='1' checked> 1
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='2' > 2
+                    </label>";
+                  }
+                }else {
+                  # code...
+                  echo "pembimbing 2";
+                  $panggil_bab="SELECT * FROM pertemuan WHERE nidn='$nidn_p1'";
+                  $hasil_bab=mysql_query($panggil_bab);
+                  $tampil_bab=mysql_fetch_array($hasil_bab);
+                  $nim=$tampil_prt['nim'];
+                  $nama_mhs=$tampil_prt['nama_mhs'];
+                  $bab=$tampil_prt['bab'];
+                  if($bab==1){
+                    echo "
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='1' checked> 1
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline2' value='2'> 2
+                    </label>";
+                  }elseif ($bab==2) {
+                    # code...
+                    echo "
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='1' checked> 1
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='2' > 2
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline2' value='3'> 3
+                    </label>";
+                  }elseif ($bab==3) {
+                    # code...
+                    echo "
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='1' checked> 1
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='2' > 2
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='3' > 3
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline2' value='4'> 4
+                    </label>";
+                  }elseif ($bab==4) {
+                    # code...
+                    echo "
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='1' checked> 1
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='2' > 2
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='3' > 3
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline2' value='4'> 4
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline2' value='5'> 5
+                    </label>";
+                  }elseif ($bab==5) {
+                    # code...
+                    echo "
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='1' checked> 1
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='2' > 2
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='3' > 3
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline2' value='4'> 4
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline2' value='5'> 5
+                    </label>";
+                  }else{
+                    echo "
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='1' checked> 1
+                    </label>
+                    <label class='radio-inline'>
+                      <input type='radio' name='bab' id='optionsRadiosInline1' value='2' > 2
+                    </label>";
+                  }
+                }
+              ?>
+                
               </div>
 
               <div class="form-group">
