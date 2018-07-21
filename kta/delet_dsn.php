@@ -10,7 +10,7 @@ $hapus_dsn="DELETE FROM dosen WHERE nidn='$nidn'";
 $oke_dsn=mysql_query($hapus_dsn);
 if ($oke_dsn) {
 	# code...
-	$hapus_user="DELETE FROM login WHERE username='$nim'";
+	$hapus_user="DELETE FROM login WHERE username='$nidn'";
 	$oke_user=mysql_query($hapus_user);
 	if ($oke_user) {
 		# code...
@@ -26,5 +26,5 @@ if ($oke_dsn) {
 }
 
 ?>
-<meta http-equiv="refresh" content="1; url=lihat_tabel_mhs.php">
+<meta http-equiv="refresh" content="1; url=lihat_tabel_dsn.php">
 

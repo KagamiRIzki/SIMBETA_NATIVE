@@ -50,8 +50,8 @@
                   
                   include "../koneksi.php";
 
-                  $panggil="SELECT * from pertemuan WHERE nim=$nim" ;
-
+                  $panggil="SELECT * from pertemuan WHERE nim='$nim'" ;
+                  // echo $nim;
                   $hasil=mysql_query($panggil);
 
                   while ($tampil=mysql_fetch_array($hasil)){

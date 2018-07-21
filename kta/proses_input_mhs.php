@@ -39,11 +39,11 @@ if ($hasil > 0) {
 
 	if( $simpan1 && $simpan2 ) 
 	{
-		echo"<script>alert('Data berhasil diinputkan'); location='input_mhs.php';</script>";
+		echo"<script>alert('Data berhasil diinputkan'); location='lihat_tabel_mhs.php';</script>";
 	}
 	else
 	{
-		echo"<script>alert('Data gagal diinputkan'); location='input_mhs.php;</script>";
+		echo"<script>alert('Data gagal diinputkan'); location='lihat_tabel_mhs.php;</script>";
 	}
 	echo mysql_error();
 }

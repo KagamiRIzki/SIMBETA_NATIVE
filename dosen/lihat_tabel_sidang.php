@@ -6,12 +6,12 @@
         <li class="breadcrumb-item">
           <a href="index.php">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Tables</li>
+        <li class="breadcrumb-item active">Mahasiswa Siap Sidang</li>
       </ol>
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Data Table Example</div>
+          <i class="fa fa-table"></i> Data Mahasiswa Siap Sidang</div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-sm table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -96,7 +96,7 @@
                   </td>
                   
                   <td><a href='update_jadwal.php?id_jadwal=<?php echo $id_jadwal; ?>'> Update </a>|
-                    <a href='delet_jadwal.php?id_jadwal=<?php echo $id_jadwal ?>'> Delet</a></td>
+                    <a href='delet_sidang.php?id_sidang=<?php echo $id_sidang ?>'> Delet</a></td>
                   </tr>
                 <?php
                 }

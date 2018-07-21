@@ -1,5 +1,5 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 include "../koneksi.php";
 session_start();
 $username=$_SESSION['username'];
@@ -42,7 +42,7 @@ else {
 	{
 		echo"<script>alert('Data gagal diinputkan'); location='lihat_tabel_jadwal.php';</script>";
 	}
-	echo mysql_error();
+	// echo mysql_error();
 }
 
 ?>

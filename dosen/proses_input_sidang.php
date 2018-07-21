@@ -42,7 +42,7 @@ if ($cek_p==1) {
 		if ($jumlah>0) {
 			# code...
 
-			echo "data ada lakukan update";
+			// echo "data ada lakukan update";
 			$update_sdg="UPDATE sidang SET
 			cek_p1='$cek_p1'
 			WHERE nim='$nim'";
@@ -56,7 +56,7 @@ if ($cek_p==1) {
 			}
 		}else {
 			# code...
-			echo "data tidak ada lakukan insert";
+			// echo "data tidak ada lakukan insert";
 			$input_sdg="INSERT INTO sidang 
 			(id_sidang, id_bimbingan, nim, nama_mhs, nidn_p1, nama_pem1, nidn_p2, nama_pem2, judul_ta, bab, pertemuan, cek_p1, cek_p2)
 			VALUE
@@ -79,7 +79,7 @@ if ($cek_p==1) {
 		$jumlah=mysql_num_rows($hitung_sidang);
 		if ($jumlah>0) {
 			# code...
-			echo "data ada lakukan update";
+			// echo "data ada lakukan update";
 			$update_sidang="UPDATE sidang SET
 			cek_p2='$cek_p2'
 			WHERE nim='$nim'";
@@ -93,7 +93,7 @@ if ($cek_p==1) {
 			}
 		}else {
 			# code...
-			echo "data tidak ada lakukan insert";
+			// echo "data tidak ada lakukan insert";
 			$input_sdg="INSERT INTO sidang 
 			(id_sidang, id_bimbingan, nim, nama_mhs, nidn_p1, nama_pem1, nidn_p2, nama_pem2, judul_ta, bab, pertemuan, cek_p1, cek_p2)
 			VALUE

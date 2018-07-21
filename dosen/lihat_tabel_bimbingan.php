@@ -6,12 +6,17 @@
         <li class="breadcrumb-item">
           <a href="index.php">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Tables</li>
+        <li class="breadcrumb-item active">Data Bimbingan</li>
       </ol>
       <!-- Example DataTables Card-->
+      <div class="card-header">
+        <a href="lihat_tabel_bimbingan_p1.php" class="btn btn-primary">Pembimbing 1</a>
+        <a href="lihat_tabel_bimbingan_p2.php" class="btn btn-primary">Pembimbing 2</a>
+      </div>
+              
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Data Table Example</div>
+          <i class="fa fa-table"></i> Data Bimbingan</div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-sm table-bordered" id="dataTable" width="100%" cellspacing="0">

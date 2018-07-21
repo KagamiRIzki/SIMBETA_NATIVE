@@ -84,6 +84,7 @@ IF(ISSET($_POST['login'])){
   else {
     # code...
     echo "<script language=\"javascript\">alert(\"Password atau Username Salah !!!\");document.location.href='login.html';</script>";
+    
   }
 }
 

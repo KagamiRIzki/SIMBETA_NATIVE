@@ -136,7 +136,7 @@
                                 # code...
                                 if ($bab==5) {
                                   # code...
-                                  echo "<input type='checkbox' name='cek_p' value='1'>";
+                                  echo "<input type='checkbox' name='cek_p' value='1' checked>";
                                 }else {
                                   # code...
                                   echo " Belum memenuhi Syarat mendaftarkan sidang ";
@@ -151,7 +151,28 @@
                         </tr>
                       </tbody>
                     </table>
-                    <button type="submit" class="btn btn-default">DAFTAR</button>
+                    <?php 
+                      if ($jumlah==8) {
+                        # code...
+                        if ($bab==5) {
+                          # code...
+                          echo "
+                          <button type='submit' class='btn btn-lg btn-primary'>DAFTAR</button>";
+                          // echo "<input type='checkbox' name='cek_p' value='1'>";
+                        }else {
+                          # code...
+                          echo "
+                          <button type='submit' class='btn btn-lg btn-primary' disabled>DAFTAR</button>";
+                          // echo " Belum memenuhi Syarat mendaftarkan sidang ";
+                        }
+                      }else {
+                        # code... 
+                          echo "
+                          <button type='submit' class='btn btn-lg btn-primary' disabled>DAFTAR</button>";
+                        // echo " Belum memenuhi Syarat mendaftarkan sidang ";
+                      }
+                    ?>
+                    <!-- <button type="submit" class="btn btn-default">DAFTAR</button> -->
                   </div>
                 </div>
 

@@ -57,19 +57,19 @@ if ($nidn_p1!=$nidn_p2) {
 
 		if($simpan) 
 		{
-			echo"<script>alert('Data berhasil diinputkan'); location='input_bimbingan.php';</script>";
+			echo"<script>alert('Data berhasil diinputkan'); location='lihat_tabel_bimbingan.php';</script>";
 		}
 		else
 		{
-			echo"<script>alert('Data gagal diinputkan'); location='input_bimbingan.php';</script>";
+			echo"<script>alert('Data gagal diinputkan'); location='lihat_tabel_bimbingan.php';</script>";
 		}
 	}else {
 		# code...
-		echo"<script>alert('Data NIM sudah ada diinputkan'); location='input_bimbingan.php';</script>";
+		echo"<script>alert('Data NIM sudah ada diinputkan'); location='lihat_tabel_bimbingan.php';</script>";
 	}
 }else {
 	# code...
-	echo"<script>alert('Data pembimbing sama'); location='input_bimbingan.php';</script>";
+	echo"<script>alert('Data pembimbing sama'); location='lihat_tabel_bimbingan.php';</script>";
 }
 echo mysql_error();
 

@@ -111,8 +111,33 @@
                     echo "<input type='checkbox' onclick='return false;'>";
                   }  ?>
                   </td>
-                  <td><a href='update_jadwal.php?id_jadwal=<?php echo $id_jadwal; ?>'> Update </a>|
-                    <a href='delet_jadwal.php?id_jadwal=<?php echo $id_jadwal ?>'> Delet</a></td>
+                  <td><a type='button' class='btn btn-info' href='update_jadwal.php?id_jadwal=<?php echo $id_jadwal; ?>'> Update </a>
+                    <!-- <a href='update_jadwal.php?id_jadwal=<?php //echo $id_jadwal; ?>'> Update </a>| -->
+                  <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#delete_jadwal-$id_jadwal'>
+                    Delete
+                  </button>
+                  <!-- Modal Delete jawal-->
+                    <div class="modal fade" id="delete_jadwal-$id_jadwal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class='modal-dialog' role='document'>
+                        <div class='modal-content'>
+                          <div class='modal-header'>
+                            <h5 class='modal-title' id='exampleModalLabel'>Yakin Ingin Menghapus</h5>
+                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                              <span aria-hidden='true'>&times;</span>
+                            </button>
+                          </div>
+                          <div class='modal-body'>
+                            Pilih 'Delete' jika ingin meng hapus <?php echo $id_jadwal; ?>
+                          </div>
+                          <div class='modal-footer'>
+                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancel</button>
+                            <a class='btn btn-primary' href='delet_jadwal.php?id_jadwal=<?php echo $id_jadwal; ?>'>Delet </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <a href='delet_jadwal.php?id_jadwal=<?php //echo $id_jadwal ?>'> Delet</a>-->
+                    </td> 
                   </tr>
                 <?php
                 }
@@ -123,7 +148,7 @@
         </div>
         <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
       </div>
-    </div>
+      
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     

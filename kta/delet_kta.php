@@ -10,7 +10,7 @@ $hapus_kta="DELETE FROM kta WHERE npak='$npak'";
 $oke_kta=mysql_query($hapus_kta);
 if ($oke_kta) {
 	# code...
-	$hapus_user="DELETE FROM login WHERE username='$nim'";
+	$hapus_user="DELETE FROM login WHERE username='$npak'";
 	$oke_user=mysql_query($hapus_user);
 	if ($oke_user) {
 		# code...

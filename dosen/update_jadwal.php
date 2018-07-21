@@ -107,7 +107,7 @@ $tampil=mysql_fetch_array($hasil);
 
               <button type="submit" class="btn btn-primary">Submit Button</button>
               <button class='btn btn-secondary' type="reset" class="btn btn-default">Reset Button</button>  
-              <a href="lihat_tabel_dsn.php" class="btn btn-secondary">Back</a>
+              <a href="lihat_tabel_jadwal.php" class="btn btn-secondary">Back</a>
             </form>
 
           </div><!-- /.row -->
